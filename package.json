@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-add-import-extension",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A babel plugin to add extension on project modules imports",
   "main": "src/plugin.js",
   "scripts": {

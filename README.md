@@ -1,22 +1,34 @@
 # babel-plugin-add-import-extension
 A plugin to add extensions to import declarations, is very useful when you use Typescript with Babel and don't want to explicity import `.js` modules.
 
-A normal import using Typescript:
+## How to install:
+
+```sh
+# using npm
+npm install --save-dev babel-plugin-add-import-extension
+# usin yarn
+yarn add -D babel-plugin-add-import-extension
+```
+
+Add to your `plugins` on your babel config file:
+```js
+plugins: ['babel-plugin-add-import-extension'] // defaults to .js extension
+```
+Is possible to set the extension when you set the plugin:
+```js
+plugins: [
+    ['babel-plugin-add-import-extension', 'jsx'] // will add jsx extension
+  ]
+```
+## Let's the transformation begin :)
+
+A module import without extension:
 ```js
 import { add, double } from './lib/numbers'
 ```
 will be converted to:
 ```js
 import { add, double } from './lib/numbers.js'
-```
-
-Is possible to set the extension when you set the plugin on your babel config file:
-```js
-plugins: ['babel-plugin-add-import-extension'] // defaults to .js extension
-
-plugins: [
-    ['babel-plugin-add-import-extension', 'jsx'] // will add jsx extension
-  ]
 ```
 
 Remember that this plugin will not override extensions and will only add the choosed extension, so if your imports already has extensions it will add another one because this plugin is really dummy :)
