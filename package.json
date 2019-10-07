@@ -1,0 +1,30 @@
+{
+  "name": "babel-plugin-add-import-extension",
+  "version": "1.0.0",
+  "description": "A babel plugin to add extension on project modules imports",
+  "main": "src/plugin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karlprieb/babel-plugin-add-import-extension.git"
+  },
+  "keywords": [
+    "babel",
+    "plugin",
+    "import",
+    "transform",
+    "extension"
+  ],
+  "author": "Karl Prieb <karl@prieb.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/karlprieb/babel-plugin-add-import-extension/issues"
+  },
+  "homepage": "https://github.com/karlprieb/babel-plugin-add-import-extension#readme",
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/helper-plugin-utils": "^7.0.0"
+  }
+}
