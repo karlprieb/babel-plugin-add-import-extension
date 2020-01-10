@@ -1,5 +1,5 @@
 const { declare } = require('@babel/helper-plugin-utils')
-const { types: { importDeclaration, stringLiteral }} = require('@babel/core')
+const { types: { importDeclaration, exportNamedDeclaration, stringLiteral }} = require('@babel/core')
 const { lstatSync } = require('fs')
 const { resolve, extname, dirname } = require('path')
 
@@ -51,6 +51,27 @@ module.exports = declare((api, options) => {
           }
         }
       },
-    },
+      ExportNamedDeclaration(path, state) {
+        if (!path.node.source) {
+          return
+        }
+
+        const module = path.node.source.value
+
+        if (skipModule(module)) {
+          return
+        }
+
+        const { filename, cwd } = state.file.opts
+        const dir = dirname(filename)
+        if (module[0] === '.') {
+          if (isDirectory(resolve(dir, module))) {
+            path.replaceWith(exportNamedDeclaration(path.node.declaration, path.node.specifiers, stringLiteral(`${module}/index.${extension}`)))
+          } else {
+            path.replaceWith(exportNamedDeclaration(path.node.declaration, path.node.specifiers, stringLiteral(`${module}.${extension}`)))
+          }
+        }
+      }
+    }
   }
 })
