@@ -1,5 +1,0 @@
-export { something } from './lib/something'
-export { something as another } from './lib/something'
-export * as anotherModule from './lib/something'
-export * from './lib/something'
-export { transform } from '@babel/core'

@@ -1,7 +1,0 @@
-import { export1 , export2 as alias2 } from './lib/something'
-import { something } from './lib/something'
-import { something as other } from './lib/something'
-import anotherImport from './lib/something'
-import another, { otherImport } from './lib/something'
-import * as Something from './lib/something'
-import { transform } from '@babel/core'

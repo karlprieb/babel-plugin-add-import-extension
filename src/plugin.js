@@ -40,7 +40,7 @@ module.exports = declare((api, options) => {
 
         if (skipModule(module)) { return }
 
-        const { filename, cwd } = state.file.opts
+        const { filename } = state.file.opts
         const dir = dirname(filename)
 
         if (module[0] === '.') {
@@ -58,7 +58,7 @@ module.exports = declare((api, options) => {
 
         if (skipModule(module)) { return }
 
-        const { filename, cwd } = state.file.opts
+        const { filename } = state.file.opts
         const dir = dirname(filename)
         if (module[0] === '.') {
           if (isDirectory(resolve(dir, module))) {
@@ -75,7 +75,7 @@ module.exports = declare((api, options) => {
 
         if (skipModule(module)) { return }
 
-        const { filename, cwd } = state.file.opts
+        const { filename } = state.file.opts
         const dir = dirname(filename)
         if (module[0] === '.') {
           if (isDirectory(resolve(dir, module))) {
