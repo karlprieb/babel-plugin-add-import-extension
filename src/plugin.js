@@ -1,5 +1,5 @@
 const { declare } = require('@babel/helper-plugin-utils')
-const { types: { importDeclaration, exportNamedDeclaration, stringLiteral }} = require('@babel/core')
+const { types: { importDeclaration, exportNamedDeclaration, exportAllDeclaration, stringLiteral }} = require('@babel/core')
 const { lstatSync } = require('fs')
 const { resolve, extname, dirname } = require('path')
 
