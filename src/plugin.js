@@ -71,6 +71,26 @@ module.exports = declare((api, options) => {
             path.replaceWith(exportNamedDeclaration(path.node.declaration, path.node.specifiers, stringLiteral(`${module}.${extension}`)))
           }
         }
+      },
+      ExportAllDeclaration(path, state) {
+        if (!path.node.source) {
+          return
+        }
+        const module = path.node.source.value;
+
+        if (skipModule(module)) {
+          return
+        }
+
+        const { filename, cwd } = state.file.opts
+        const dir = dirname(filename)
+        if (module[0] === '.') {
+          if (isDirectory(resolve(dir, module))) {
+            path.replaceWith(exportAllDeclaration(stringLiteral(`${module}/index.${extension}`)))
+          } else {
+            path.replaceWith(exportAllDeclaration(stringLiteral(`${module}.${extension}`)))
+          }
+        }
       }
     }
   }
