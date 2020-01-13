@@ -17,7 +17,7 @@ plugins: ['babel-plugin-add-import-extension'] // defaults to .js extension
 Is possible to set the extension when you set the plugin:
 ```js
 plugins: [
-    ['babel-plugin-add-import-extension', 'jsx'] // will add jsx extension
+    ['babel-plugin-add-import-extension', { extension: 'jsx' }] // will add jsx extension
   ]
 ```
 ## Let's the transformation begin :)
@@ -29,6 +29,15 @@ import { add, double } from './lib/numbers'
 will be converted to:
 ```js
 import { add, double } from './lib/numbers.js'
+```
+
+A module export without extension:
+```js
+export { add, double } from './lib/numbers'
+```
+will be converted to:
+```js
+export { add, double } from './lib/numbers.js'
 ```
 
 Remember that this plugin will not override extensions.

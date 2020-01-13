@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Export statement should add custom extension to necessary export statements 1`] = `
+"export { something } from \\"./lib/something.jsx\\";
+export { something as another } from \\"./lib/something.jsx\\";
+export * as anotherModule from \\"./lib/something.jsx\\";
+export * from \\"./lib/something.jsx\\";
+export { transform } from '@babel/core';"
+`;
+
+exports[`Export statement should add the default extension to necessary export statements 1`] = `
+"export { something } from \\"./lib/something.js\\";
+export { something as another } from \\"./lib/something.js\\";
+export * as anotherModule from \\"./lib/something.js\\";
+export * from \\"./lib/something.js\\";
+export { transform } from '@babel/core';"
+`;
+
+exports[`Import statement should add custom extension to necessary import statements 1`] = `
+"import { export1, export2 as alias2 } from \\"./lib/something.jsx\\";
+import { something } from \\"./lib/something.jsx\\";
+import { something as other } from \\"./lib/something.jsx\\";
+import anotherImport from \\"./lib/something.jsx\\";
+import another, { otherImport } from \\"./lib/something.jsx\\";
+import * as Something from \\"./lib/something.jsx\\";
+import { transform } from '@babel/core';"
+`;
+
+exports[`Import statement should add the default extension to necessary import statements 1`] = `
+"import { export1, export2 as alias2 } from \\"./lib/something.js\\";
+import { something } from \\"./lib/something.js\\";
+import { something as other } from \\"./lib/something.js\\";
+import anotherImport from \\"./lib/something.js\\";
+import another, { otherImport } from \\"./lib/something.js\\";
+import * as Something from \\"./lib/something.js\\";
+import { transform } from '@babel/core';"
+`;

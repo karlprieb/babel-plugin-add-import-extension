@@ -34,11 +34,11 @@ module.exports = declare((api, options) => {
     name: 'add-import-extension',
     visitor: {
       ImportDeclaration(path, state) {
-        const module = path.node.source.value
+        if (!path.node.source) { return }
 
-        if (skipModule(module)) {
-          return
-        }
+        const module = path.node.source.value;
+
+        if (skipModule(module)) { return }
 
         const { filename, cwd } = state.file.opts
         const dir = dirname(filename)
@@ -52,15 +52,11 @@ module.exports = declare((api, options) => {
         }
       },
       ExportNamedDeclaration(path, state) {
-        if (!path.node.source) {
-          return
-        }
+        if (!path.node.source) { return }
 
-        const module = path.node.source.value
+        const module = path.node.source.value;
 
-        if (skipModule(module)) {
-          return
-        }
+        if (skipModule(module)) { return }
 
         const { filename, cwd } = state.file.opts
         const dir = dirname(filename)
@@ -73,14 +69,11 @@ module.exports = declare((api, options) => {
         }
       },
       ExportAllDeclaration(path, state) {
-        if (!path.node.source) {
-          return
-        }
+        if (!path.node.source) { return }
+
         const module = path.node.source.value;
 
-        if (skipModule(module)) {
-          return
-        }
+        if (skipModule(module)) { return }
 
         const { filename, cwd } = state.file.opts
         const dir = dirname(filename)
