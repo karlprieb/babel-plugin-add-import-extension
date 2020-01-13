@@ -1,8 +1,7 @@
 # babel-plugin-add-import-extension
-A plugin to add extensions to import declarations, is very useful when you use Typescript with Babel and don't want to explicity import `.js` modules.
+A plugin to add extensions to import and export declarations, is very useful when you use Typescript with Babel and don't want to explicity import or export module with extensions.
 
 ## How to install:
-
 ```sh
 # using npm
 npm install --save-dev babel-plugin-add-import-extension
@@ -44,4 +43,4 @@ Remember that this plugin will not override extensions.
 
 What this plugin does is to check all imported modules and if your module is not on `node_module` it will consider that is a project/local module and add the choosed extension, so for node modules it don't add any extension.
 
-I made this plugin for personal use on my [typescript boilerplate](https://github.com/karlprieb/typescript-web-starter), but if a lot of people start to use I can add tests and some documentation ;)
+I made this plugin for personal use on my [typescript boilerplate](https://github.com/karlprieb/typescript-web-starter), but if a lot of people start to use I can better documentation ;)
