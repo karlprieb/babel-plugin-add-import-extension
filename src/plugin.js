@@ -17,9 +17,11 @@ const isNodeModule = module => {
 
 const skipModule = (module, { replace, extension }) =>
   isNodeModule(module)
-  || replace
-    ? extname(module) === `.${extension}`
-    : extname(module).length
+  || (
+    replace
+      ? extname(module) === `.${extension}`
+      : extname(module).length
+  )
 
 const makeDeclaration =
   ({ declaration, args, replace = false, extension = 'js' }) =>
@@ -31,21 +33,22 @@ const makeDeclaration =
 
         if (module[0] === '.') {
           const dirPath = resolve(dirname(filename), module)
-          if (existsSync(dirPath) && lstatSync(dirPath).isDirectory()) {
-            path.replaceWith(
-              declaration(
-                ...args(path),
-                stringLiteral(`${module}/index.${extension}`)
-              )
+
+          const hasModuleExt = extname(module).length
+          const newModuleName = hasModuleExt ? module.slice(0,-extname(module).length) : module
+
+          const pathLiteral =
+            existsSync(dirPath)
+            && lstatSync(dirPath).isDirectory()
+              ? `${module}/index.${extension}`
+              : `${newModuleName}.${extension}`
+
+          path.replaceWith(
+            declaration(
+              ...args(path),
+              stringLiteral(pathLiteral)
             )
-          } else {
-            path.replaceWith(
-              declaration(
-                ...args(path),
-                stringLiteral(`${module.slice(0,-extname(module).length)}.${extension}`)
-              )
-            )
-          }
+          )
         }
     }
 
