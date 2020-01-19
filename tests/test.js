@@ -22,9 +22,9 @@ export { transform } from '@babel/core'
 describe('Replace', () => {
   test.each`
     type                             | statements          | extension
-    ${'default extension to import'} | ${importStatements} | ${false}
+    ${'default extension to import'} | ${importStatements} | ${undefined}
     ${'custom extension to import'}  | ${importStatements} | ${'jsx'}
-    ${'default extension to export'} | ${exportStatements} | ${false}
+    ${'default extension to export'} | ${exportStatements} | ${undefined}
     ${'custom extension to export'}  | ${exportStatements} | ${'jsx'}
   `('should add the $type statements', ({statements, extension}) => {
     const { code } = babel.transformSync(statements, {
