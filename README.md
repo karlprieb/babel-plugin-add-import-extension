@@ -19,6 +19,12 @@ plugins: [
     ['babel-plugin-add-import-extension', { extension: 'jsx' }] // will add jsx extension
   ]
 ```
+You can also replace existing extensions with the one you want
+```js
+plugins: [
+    ['babel-plugin-add-import-extension', { extension: 'jsx', replace: true }] // will add jsx extension
+  ]
+```
 ## Let's the transformation begin :)
 
 A module import without extension:
@@ -39,7 +45,23 @@ will be converted to:
 export { add, double } from './lib/numbers.js'
 ```
 
-Remember that this plugin will not override extensions.
+If you add the `replace:true` option, extensions will be overwritten like so
+
+```js
+import { add, double } from './lib/numbers.ts'
+```
+will be converted to:
+```js
+import { add, double } from './lib/numbers.js'
+```
+and
+```js
+export { add, double } from './lib/numbers.ts'
+```
+will be converted to:
+```js
+export { add, double } from './lib/numbers.js'
+```
 
 What this plugin does is to check all imported modules and if your module is not on `node_module` it will consider that is a project/local module and add the choosed extension, so for node modules it don't add any extension.
 
