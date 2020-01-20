@@ -38,10 +38,10 @@ describe('Replace', () => {
     ${'custom extension to import'}  | ${importStatements} | ${'jsx'}     | ${undefined}
     ${'default extension to export'} | ${exportStatements} | ${undefined} | ${undefined}
     ${'custom extension to export'}  | ${exportStatements} | ${'jsx'}     | ${undefined}
-    ${'replace extension to import'} | ${importStatements} | ${undefined} | ${true}
-    ${'replace extension to import'} | ${importStatements} | ${'js'}     | ${true}
-    ${'replace extension to export'} | ${exportStatements} | ${undefined} | ${true}
-    ${'replace extension to export'} | ${exportStatements} | ${'js'}     | ${true}
+    ${'replace default extension to import'} | ${importStatements} | ${undefined} | ${true}
+    ${'replace custom extension to import'} | ${importStatements} | ${'jsx'}     | ${true}
+    ${'replace default extension to export'} | ${exportStatements} | ${undefined} | ${true}
+    ${'replace custom extension to export'} | ${exportStatements} | ${'jsx'}     | ${true}
   `('should add the $type statements', ({ statements, extension, replace }) => {
     const { code } = babel.transformSync(statements, {
       plugins: [ [plugin, { extension, replace }] ],
