@@ -16,7 +16,8 @@ const isNodeModule = module => {
 }
 
 const skipModule = (module, { replace, extension }) =>
-  isNodeModule(module)
+  !module.startsWith('.')
+  || isNodeModule(module)
   || (
     replace
       ? extname(module) === `.${extension}`
@@ -31,26 +32,24 @@ const makeDeclaration =
         if (!source || skipModule(source && source.value, { replace, extension })) return
         const { value: module } = source
 
-        if (module[0] === '.') {
-          const dirPath = resolve(dirname(filename), module)
+        const dirPath = resolve(dirname(filename), module)
 
-          const hasModuleExt = extname(module).length
-          const newModuleName = hasModuleExt ? module.slice(0,-extname(module).length) : module
+        const hasModuleExt = extname(module).length
+        const newModuleName = hasModuleExt ? module.slice(0,-extname(module).length) : module
 
-          const pathLiteral =
-            existsSync(dirPath)
-            && lstatSync(dirPath).isDirectory()
-              ? `${module}/index.${extension}`
-              : `${newModuleName}.${extension}`
+        const pathLiteral =
+          existsSync(dirPath)
+          && lstatSync(dirPath).isDirectory()
+            ? `${module}/index.${extension}`
+            : `${newModuleName}.${extension}`
 
-          path.replaceWith(
-            declaration(
-              ...args(path),
-              stringLiteral(pathLiteral)
-            )
+        path.replaceWith(
+          declaration(
+            ...args(path),
+            stringLiteral(pathLiteral)
           )
-        }
-    }
+        )
+      }
 
 module.exports = declare((api, options) => {
   api.assertVersion(7)
