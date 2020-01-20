@@ -9,6 +9,13 @@ import anotherImport from './lib/something'
 import another, { otherImport } from './lib/something'
 import * as Something from './lib/something'
 import { transform } from '@babel/core'
+
+import { replacer_export1 , replacer_export2 as replacer_alias2 } from './lib/something.ts'
+import { replacer_something } from './lib/something.ts'
+import { replacer_something as replacer_other } from './lib/something.ts'
+import replacer_anotherImport from './lib/something.ts'
+import replacer_another, { replacer_otherImport } from './lib/something.ts'
+import * as replacer_Something from './lib/something.ts'
 `
 
 const exportStatements = `
@@ -17,18 +24,27 @@ export { something as another } from './lib/something'
 export * as anotherModule from './lib/something'
 export * from './lib/something'
 export { transform } from '@babel/core'
+
+export { replacer_something } from './lib/something.ts'
+export { replacer_something as replacer_another } from './lib/something.ts'
+export * as replacer_anotherModule from './lib/something.ts'
+export * as replacer_something2 from './lib/something.ts'
 `
 
 describe('Replace', () => {
   test.each`
-    type                             | statements          | extension
-    ${'default extension to import'} | ${importStatements} | ${undefined}
-    ${'custom extension to import'}  | ${importStatements} | ${'jsx'}
-    ${'default extension to export'} | ${exportStatements} | ${undefined}
-    ${'custom extension to export'}  | ${exportStatements} | ${'jsx'}
-  `('should add the $type statements', ({statements, extension}) => {
+    type                             | statements          | extension    | replace
+    ${'default extension to import'} | ${importStatements} | ${undefined} | ${undefined}
+    ${'custom extension to import'}  | ${importStatements} | ${'jsx'}     | ${undefined}
+    ${'default extension to export'} | ${exportStatements} | ${undefined} | ${undefined}
+    ${'custom extension to export'}  | ${exportStatements} | ${'jsx'}     | ${undefined}
+    ${'replace extension to import'} | ${importStatements} | ${undefined} | ${true}
+    ${'replace extension to import'} | ${importStatements} | ${'js'}     | ${true}
+    ${'replace extension to export'} | ${exportStatements} | ${undefined} | ${true}
+    ${'replace extension to export'} | ${exportStatements} | ${'js'}     | ${true}
+  `('should add the $type statements', ({ statements, extension, replace }) => {
     const { code } = babel.transformSync(statements, {
-      plugins: [ [plugin, { extension }] ],
+      plugins: [ [plugin, { extension, replace }] ],
       filename: ''
     })
   
