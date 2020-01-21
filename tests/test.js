@@ -33,15 +33,15 @@ export * as replacer_something2 from './lib/something.ts'
 
 describe('Replace', () => {
   test.each`
-    type                             | statements          | extension    | replace
-    ${'default extension to import'} | ${importStatements} | ${undefined} | ${undefined}
-    ${'custom extension to import'}  | ${importStatements} | ${'jsx'}     | ${undefined}
-    ${'default extension to export'} | ${exportStatements} | ${undefined} | ${undefined}
-    ${'custom extension to export'}  | ${exportStatements} | ${'jsx'}     | ${undefined}
+    type                                     | statements          | extension    | replace
+    ${'default extension to import'}         | ${importStatements} | ${undefined} | ${undefined}
+    ${'custom extension to import'}          | ${importStatements} | ${'jsx'}     | ${undefined}
+    ${'default extension to export'}         | ${exportStatements} | ${undefined} | ${undefined}
+    ${'custom extension to export'}          | ${exportStatements} | ${'jsx'}     | ${undefined}
     ${'replace default extension to import'} | ${importStatements} | ${undefined} | ${true}
-    ${'replace custom extension to import'} | ${importStatements} | ${'jsx'}     | ${true}
+    ${'replace custom extension to import'}  | ${importStatements} | ${'jsx'}     | ${true}
     ${'replace default extension to export'} | ${exportStatements} | ${undefined} | ${true}
-    ${'replace custom extension to export'} | ${exportStatements} | ${'jsx'}     | ${true}
+    ${'replace custom extension to export'}  | ${exportStatements} | ${'jsx'}     | ${true}
   `('should add the $type statements', ({ statements, extension, replace }) => {
     const { code } = babel.transformSync(statements, {
       plugins: [ [plugin, { extension, replace }] ],
