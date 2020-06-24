@@ -111,3 +111,19 @@ import replacer_anotherImport from \\"./lib/something.js\\";
 import replacer_another, { replacer_otherImport } from \\"./lib/something.js\\";
 import * as replacer_Something from \\"./lib/something.js\\";"
 `;
+
+exports[`Replace should skip type-only exports 1`] = `"export type { NamedType } from './lib/something';"`;
+
+exports[`Replace should skip type-only exports 2`] = `"export type { NamedType } from './lib/something';"`;
+
+exports[`Replace should skip type-only imports 1`] = `
+"import type DefaultType from './lib/something';
+import type { NamedType } from './lib/something';
+import type * as AllTypes from './lib/something';"
+`;
+
+exports[`Replace should skip type-only imports 2`] = `
+"import type DefaultType from './lib/something';
+import type { NamedType } from './lib/something';
+import type * as AllTypes from './lib/something';"
+`;

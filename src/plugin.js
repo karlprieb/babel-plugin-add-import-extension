@@ -27,9 +27,12 @@ const skipModule = (module, { replace, extension }) =>
 const makeDeclaration =
   ({ declaration, args, replace = false, extension = 'js' }) =>
       (path, { file: { opts: { filename } }}) => {
-        const { node: { source } } = path
+        const { node } = path
+        const { source, exportKind, importKind } = node
 
-        if (!source || skipModule(source && source.value, { replace, extension })) return
+        const isTypeOnly = exportKind === 'type' || importKind === 'type'
+
+        if (!source || isTypeOnly || skipModule(source && source.value, { replace, extension })) return
         const { value: module } = source
 
         const dirPath = resolve(dirname(filename), module)

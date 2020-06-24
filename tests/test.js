@@ -1,4 +1,5 @@
 const babel = require('@babel/core')
+const syntaxTypescript = require('@babel/plugin-syntax-typescript')
 const plugin = require('../src/plugin.js')
 
 const importStatements = `
@@ -31,6 +32,16 @@ export * as replacer_anotherModule from './lib/something.ts'
 export * as replacer_something2 from './lib/something.ts'
 `
 
+const typeOnlyExports = `
+export type { NamedType } from './lib/something'
+`
+
+const typeOnlyImports = `
+import type DefaultType from './lib/something' 
+import type { NamedType } from './lib/something' 
+import type * as AllTypes from './lib/something' 
+`
+
 describe('Replace', () => {
   test.each`
     type                                     | statements          | extension    | replace
@@ -45,9 +56,24 @@ describe('Replace', () => {
   `('should add the $type statements', ({ statements, extension, replace }) => {
     const { code } = babel.transformSync(statements, {
       plugins: [ [plugin, { extension, replace }] ],
-      filename: ''
+      filename: '',
     })
-  
+
+    expect(code).toMatchSnapshot()
+  })
+
+  test.each`
+    type                         | statements         | extension    | replace
+    ${'skip type-only imports'} | ${typeOnlyImports} | ${undefined} | ${undefined}
+    ${'skip type-only exports'} | ${typeOnlyExports} | ${undefined} | ${true}
+    ${'skip type-only imports'} | ${typeOnlyImports} | ${'jsx'}     | ${undefined}
+    ${'skip type-only exports'} | ${typeOnlyExports} | ${'jsx'}     | ${true}
+  `('should $type', ({ statements, extension, replace }) => {
+    const { code } = babel.transformSync(statements, {
+      plugins: [ syntaxTypescript, [plugin, { extension, replace }] ],
+      filename: '',
+    })
+
     expect(code).toMatchSnapshot()
   })
 })
