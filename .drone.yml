@@ -1,0 +1,14 @@
+kind: pipeline
+type: docker
+name: default
+
+steps:
+  - name: test
+    image: node:alpine
+    commands:
+      - npm install
+      - npm run test
+
+trigger:
+  branch:
+    - main
