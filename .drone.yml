@@ -6,7 +6,7 @@ steps:
   - name: test
     image: node:alpine
     commands:
-      - npm install
+      - npm ci
       - npm run test
 
 trigger:
