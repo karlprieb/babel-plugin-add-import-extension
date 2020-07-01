@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-add-import-extension",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "A babel plugin to add extension on project modules imports",
   "main": "src/plugin.js",
   "scripts": {
@@ -28,11 +28,11 @@
     "@babel/core": ">=7.0.0"
   },
   "dependencies": {
-    "@babel/helper-plugin-utils": "^7.10.3"
+    "@babel/helper-plugin-utils": "^7.10.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.10.3",
-    "@babel/plugin-syntax-typescript": "^7.10.1",
+    "@babel/core": "^7.10.4",
+    "@babel/plugin-syntax-typescript": "^7.10.4",
     "jest": "^26.1.0"
   }
 }
