@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/karlprieb/babel-plugin-add-import-extension.git"
+    "url": "git+https://git.libre.cx/karl/babel-plugin-add-import-extension.git"
   },
   "keywords": [
     "babel",
@@ -21,9 +21,9 @@
   "author": "Karl Prieb <karl@prieb.me>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/karlprieb/babel-plugin-add-import-extension/issues"
+    "url": "https://git.libre.cx/karl/babel-plugin-add-import-extension/issues"
   },
-  "homepage": "https://github.com/karlprieb/babel-plugin-add-import-extension#readme",
+  "homepage": "https://git.libre.cx/karl/babel-plugin-add-import-extension",
   "peerDependencies": {
     "@babel/core": ">=7.0.0"
   },
