@@ -1,3 +1,4 @@
+/* global describe, test, expect */
 const babel = require('@babel/core')
 const syntaxTypescript = require('@babel/plugin-syntax-typescript')
 const plugin = require('../src/plugin.js')
@@ -55,23 +56,23 @@ describe('Replace', () => {
     ${'replace custom extension to export'}  | ${exportStatements} | ${'jsx'}     | ${true}
   `('should add the $type statements', ({ statements, extension, replace }) => {
     const { code } = babel.transformSync(statements, {
-      plugins: [ [plugin, { extension, replace }] ],
-      filename: '',
+      plugins: [[plugin, { extension, replace }]],
+      filename: ''
     })
 
     expect(code).toMatchSnapshot()
   })
 
   test.each`
-    type                         | statements         | extension    | replace
+    type                        | statements         | extension    | replace
     ${'skip type-only imports'} | ${typeOnlyImports} | ${undefined} | ${undefined}
     ${'skip type-only exports'} | ${typeOnlyExports} | ${undefined} | ${true}
     ${'skip type-only imports'} | ${typeOnlyImports} | ${'jsx'}     | ${undefined}
     ${'skip type-only exports'} | ${typeOnlyExports} | ${'jsx'}     | ${true}
   `('should $type', ({ statements, extension, replace }) => {
     const { code } = babel.transformSync(statements, {
-      plugins: [ syntaxTypescript, [plugin, { extension, replace }] ],
-      filename: '',
+      plugins: [syntaxTypescript, [plugin, { extension, replace }]],
+      filename: ''
     })
 
     expect(code).toMatchSnapshot()

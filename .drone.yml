@@ -3,11 +3,24 @@ type: docker
 name: default
 
 steps:
-  - name: test
+  - name: install
     image: node:alpine
     commands:
       - npm ci
+
+  - name: lint
+    image: node:alpine
+    commands:
+      - npm run lint
+    depends_on:
+      - install
+
+  - name: test
+    image: node:alpine
+    commands:
       - npm run test
+    depends_on:
+      - install
 
 trigger:
   branch:

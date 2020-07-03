@@ -1,5 +1,5 @@
 const { declare } = require('@babel/helper-plugin-utils')
-const { types: { importDeclaration, exportNamedDeclaration, exportAllDeclaration, stringLiteral }} = require('@babel/core')
+const { types: { importDeclaration, exportNamedDeclaration, exportAllDeclaration, stringLiteral } } = require('@babel/core')
 const { existsSync, lstatSync } = require('fs')
 const { resolve, extname, dirname } = require('path')
 
@@ -16,9 +16,9 @@ const isNodeModule = module => {
 }
 
 const skipModule = (module, { replace, extension }) =>
-  !module.startsWith('.')
-  || isNodeModule(module)
-  || (
+  !module.startsWith('.') ||
+  isNodeModule(module) ||
+  (
     replace
       ? extname(module) === `.${extension}`
       : extname(module).length
@@ -26,33 +26,33 @@ const skipModule = (module, { replace, extension }) =>
 
 const makeDeclaration =
   ({ declaration, args, replace = false, extension = 'js' }) =>
-      (path, { file: { opts: { filename } }}) => {
-        const { node } = path
-        const { source, exportKind, importKind } = node
+    (path, { file: { opts: { filename } } }) => {
+      const { node } = path
+      const { source, exportKind, importKind } = node
 
-        const isTypeOnly = exportKind === 'type' || importKind === 'type'
+      const isTypeOnly = exportKind === 'type' || importKind === 'type'
 
-        if (!source || isTypeOnly || skipModule(source && source.value, { replace, extension })) return
-        const { value: module } = source
+      if (!source || isTypeOnly || skipModule(source && source.value, { replace, extension })) return
+      const { value: module } = source
 
-        const dirPath = resolve(dirname(filename), module)
+      const dirPath = resolve(dirname(filename), module)
 
-        const hasModuleExt = extname(module).length
-        const newModuleName = hasModuleExt ? module.slice(0,-extname(module).length) : module
+      const hasModuleExt = extname(module).length
+      const newModuleName = hasModuleExt ? module.slice(0, -extname(module).length) : module
 
-        const pathLiteral =
-          existsSync(dirPath)
-          && lstatSync(dirPath).isDirectory()
+      const pathLiteral =
+          existsSync(dirPath) &&
+          lstatSync(dirPath).isDirectory()
             ? `${module}/index.${extension}`
             : `${newModuleName}.${extension}`
 
-        path.replaceWith(
-          declaration(
-            ...args(path),
-            stringLiteral(pathLiteral)
-          )
+      path.replaceWith(
+        declaration(
+          ...args(path),
+          stringLiteral(pathLiteral)
         )
-      }
+      )
+    }
 
 module.exports = declare((api, options) => {
   api.assertVersion(7)

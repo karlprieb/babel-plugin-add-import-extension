@@ -4,7 +4,9 @@
   "description": "A babel plugin to add extension on project modules imports",
   "main": "src/plugin.js",
   "scripts": {
-    "test": "jest tests"
+    "test": "jest tests",
+    "lint": "standard",
+    "lint:fix": "standard --fix"
   },
   "repository": {
     "type": "git",
@@ -33,6 +35,7 @@
   "devDependencies": {
     "@babel/core": "^7.10.4",
     "@babel/plugin-syntax-typescript": "^7.10.4",
-    "jest": "^26.1.0"
+    "jest": "^26.1.0",
+    "standard": "^14.3.4"
   }
 }
