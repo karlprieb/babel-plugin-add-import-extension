@@ -1,4 +1,4 @@
-# babel-plugin-add-import-extension [![Build Status](https://drone.libre.cx/api/badges/karl/babel-plugin-add-import-extension/status.svg)](https://drone.libre.cx/karl/babel-plugin-add-import-extension)
+# babel-plugin-add-import-extension  [![Build Status](https://drone.libre.cx/api/badges/karl/babel-plugin-add-import-extension/status.svg)](https://drone.libre.cx/karl/babel-plugin-add-import-extension)
 
 This plugin is not managed on Github anymore, so the Github repository is just a mirror to the [actual repository](https://git.libre.cx/karl/babel-plugin-add-import-extension). You can create issues and open PRs [here](https://git.libre.cx/karl/babel-plugin-add-import-extension).
 
