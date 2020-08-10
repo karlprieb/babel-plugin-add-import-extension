@@ -1,0 +1,20 @@
+image: alpine/edge
+packages:
+  - nodejs
+  - npm
+sources:
+  - https://git.sr.ht/~kprieb/babel-plugin-add-import-extension
+tasks:
+  - setup: |
+      cd babel-plugin-add-import-extension
+      npm install
+  - lint: |
+      cd babel-plugin-add-import-extension
+      npm run lint
+  - test: |
+      cd babel-plugin-add-import-extension
+      npm test
+triggers:
+  - action: email
+    condition: always
+    to: karl@pesso.al
