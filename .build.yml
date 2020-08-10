@@ -7,7 +7,7 @@ sources:
 tasks:
   - setup: |
       cd babel-plugin-add-import-extension
-      npm install
+      npm ci
   - lint: |
       cd babel-plugin-add-import-extension
       npm run lint
