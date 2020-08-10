@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-add-import-extension",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "description": "A babel plugin to add extension on project modules imports",
   "main": "src/plugin.js",
   "scripts": {
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://git.libre.cx/karl/babel-plugin-add-import-extension.git"
+    "url": "https://git.sr.ht/~kprieb/babel-plugin-add-import-extension"
   },
   "keywords": [
     "babel",
@@ -20,12 +20,12 @@
     "transform",
     "extension"
   ],
-  "author": "Karl Prieb <karl@prieb.me>",
+  "author": "Karl Prieb <karl@pesso.al>",
   "license": "MIT",
   "bugs": {
-    "url": "https://git.libre.cx/karl/babel-plugin-add-import-extension/issues"
+    "url": "https://todo.sr.ht/~kprieb/babel-plugin-add-import-extension"
   },
-  "homepage": "https://git.libre.cx/karl/babel-plugin-add-import-extension",
+  "homepage": "https://git.sr.ht/~kprieb/babel-plugin-add-import-extension",
   "peerDependencies": {
     "@babel/core": ">=7.0.0"
   },
