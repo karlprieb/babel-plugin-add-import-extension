@@ -84,3 +84,10 @@ export { add, double } from "./lib/numbers.js";
 ```
 
 What this plugin does is to check all imported modules and if your module is not on `node_module` it will consider that is a project/local module and add the choosed extension, so for node modules it don't add any extension.
+
+## Resources
+
+[Send patches](https://git-send-email.io) and questions to
+[~kprieb/babel-plugin-add-import-extension@lists.sr.ht](https://lists.sr.ht/~kprieb/babel-plugin-add-import-extension).
+
+Bugs & todo here: [~kprieb/babel-plugin-add-import-extension](https://todo.sr.ht/~kprieb/babel-plugin-add-import-extension)
