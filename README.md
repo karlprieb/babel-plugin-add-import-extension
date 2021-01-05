@@ -1,4 +1,4 @@
-# babel-plugin-add-import-extension
+# babel-plugin-add-import-extension ![Lint and test](https://github.com/karlprieb/babel-plugin-add-import-extension/workflows/Lint%20and%20test/badge.svg)
 
 Back to Github :)
 This project started on Github and I moved that to SourceHut, but I found that this project had so much more interactions and was so much more reachable for other devs on Github that I decide to move that back. Sadly I deleted the old repo and we lost some issues.
