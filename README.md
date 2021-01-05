@@ -1,4 +1,7 @@
-# babel-plugin-add-import-extension [![builds.sr.ht status](https://builds.sr.ht/~kprieb/babel-plugin-add-import-extension.svg)](https://builds.sr.ht/~kprieb/babel-plugin-add-import-extension?)
+# babel-plugin-add-import-extension
+
+Back to Github :)
+This project started on Github and I moved that to SourceHut, but I found that this project had so much more interactions and was so much more reachable for other devs on Github that I decide to move that back. Sadly I deleted the old repo and we lost some issues.
 
 A plugin to add extensions to import and export declarations, is very useful when you use Typescript with Babel and don't want to explicity import or export module with extensions.
 
@@ -84,10 +87,3 @@ export { add, double } from "./lib/numbers.js";
 ```
 
 What this plugin does is to check all imported modules and if your module is not on `node_module` it will consider that is a project/local module and add the choosed extension, so for node modules it don't add any extension.
-
-## Resources
-
-[Send patches](https://git-send-email.io) and questions to
-[~kprieb/babel-plugin-add-import-extension@lists.sr.ht](https://lists.sr.ht/~kprieb/babel-plugin-add-import-extension).
-
-Bugs & todo here: [~kprieb/babel-plugin-add-import-extension](https://todo.sr.ht/~kprieb/babel-plugin-add-import-extension)
