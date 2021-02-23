@@ -4,6 +4,10 @@ const { existsSync, lstatSync } = require('fs')
 const { resolve, extname, dirname } = require('path')
 
 const isNodeModule = module => {
+  if (module === '../') {
+    return false
+  }
+
   try {
     require.resolve(module)
     return true
@@ -40,16 +44,18 @@ const makeDeclaration =
       const hasModuleExt = extname(module).length
       const newModuleName = hasModuleExt ? module.slice(0, -extname(module).length) : module
 
-      const pathLiteral =
-          existsSync(dirPath) &&
-          lstatSync(dirPath).isDirectory()
-            ? `${module}/index.${extension}`
-            : `${newModuleName}.${extension}`
+      const pathLiteral = () => {
+        if (existsSync(dirPath) && lstatSync(dirPath).isDirectory()) {
+          return `${module}${newModuleName.endsWith('/') ? '' : '/'}index.${extension}`
+        }
+
+        return `${newModuleName}.${extension}`
+      }
 
       path.replaceWith(
         declaration(
           ...args(path),
-          stringLiteral(pathLiteral)
+          stringLiteral(pathLiteral())
         )
       )
     }

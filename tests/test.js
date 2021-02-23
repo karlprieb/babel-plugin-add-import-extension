@@ -4,6 +4,9 @@ const syntaxTypescript = require('@babel/plugin-syntax-typescript')
 const plugin = require('../src/plugin.js')
 
 const importStatements = `
+import { oneBackLevel } from '../'
+import { twoBackLevel } from '../..'
+import { somethingBack } from '../lib/something'
 import { export1 , export2 as alias2 } from './lib/something'
 import { something } from './lib/something'
 import { something as other } from './lib/something'
@@ -21,6 +24,9 @@ import * as replacer_Something from './lib/something.ts'
 `
 
 const exportStatements = `
+export { oneBackLevel } from '../'
+export { twoBackLevel } from '../../'
+export { somethingBack } from '../lib/something'
 export { something } from './lib/something'
 export { something as another } from './lib/something'
 export * as anotherModule from './lib/something'
