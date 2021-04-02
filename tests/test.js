@@ -4,8 +4,10 @@ const syntaxTypescript = require('@babel/plugin-syntax-typescript')
 const plugin = require('../src/plugin.js')
 
 const importStatements = `
-import { oneBackLevel } from '../'
+import { oneBackLevel } from '..'
+import { oneBackLevelIndex } from '../'
 import { twoBackLevel } from '../..'
+import { twoBackLevelIndex } from '../../'
 import { somethingBack } from '../lib/something'
 import { export1 , export2 as alias2 } from './lib/something'
 import { something } from './lib/something'
@@ -24,8 +26,10 @@ import * as replacer_Something from './lib/something.ts'
 `
 
 const exportStatements = `
-export { oneBackLevel } from '../'
-export { twoBackLevel } from '../../'
+export { oneBackLevel } from '..'
+export { oneBackLevelIndex } from '../'
+export { twoBackLevel } from '../..'
+export { twoBackLevelIndex } from '../../'
 export { somethingBack } from '../lib/something'
 export { something } from './lib/something'
 export { something as another } from './lib/something'
@@ -44,9 +48,9 @@ export type { NamedType } from './lib/something'
 `
 
 const typeOnlyImports = `
-import type DefaultType from './lib/something' 
-import type { NamedType } from './lib/something' 
-import type * as AllTypes from './lib/something' 
+import type DefaultType from './lib/something'
+import type { NamedType } from './lib/something'
+import type * as AllTypes from './lib/something'
 `
 
 describe('Replace', () => {
