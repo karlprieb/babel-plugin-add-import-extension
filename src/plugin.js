@@ -4,7 +4,7 @@ const { existsSync, lstatSync } = require('fs')
 const { resolve, extname, dirname } = require('path')
 
 const isNodeModule = module => {
-  if (module === '../') {
+  if (module.startsWith('.') || module.startsWith('/')) {
     return false
   }
 

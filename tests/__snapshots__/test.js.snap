@@ -2,7 +2,9 @@
 
 exports[`Replace should add the custom extension to export statements 1`] = `
 "export { oneBackLevel } from \\"../index.jsx\\";
+export { oneBackLevelIndex } from \\"../index.jsx\\";
 export { twoBackLevel } from \\"../../index.jsx\\";
+export { twoBackLevelIndex } from \\"../../index.jsx\\";
 export { somethingBack } from \\"../lib/something.jsx\\";
 export { something } from \\"./lib/something.jsx\\";
 export { something as another } from \\"./lib/something.jsx\\";
@@ -17,7 +19,9 @@ export * as replacer_something2 from './lib/something.ts';"
 
 exports[`Replace should add the custom extension to import statements 1`] = `
 "import { oneBackLevel } from \\"../index.jsx\\";
+import { oneBackLevelIndex } from \\"../index.jsx\\";
 import { twoBackLevel } from \\"../../index.jsx\\";
+import { twoBackLevelIndex } from \\"../../index.jsx\\";
 import { somethingBack } from \\"../lib/something.jsx\\";
 import { export1, export2 as alias2 } from \\"./lib/something.jsx\\";
 import { something } from \\"./lib/something.jsx\\";
@@ -36,7 +40,9 @@ import * as replacer_Something from './lib/something.ts';"
 
 exports[`Replace should add the default extension to export statements 1`] = `
 "export { oneBackLevel } from \\"../index.js\\";
+export { oneBackLevelIndex } from \\"../index.js\\";
 export { twoBackLevel } from \\"../../index.js\\";
+export { twoBackLevelIndex } from \\"../../index.js\\";
 export { somethingBack } from \\"../lib/something.js\\";
 export { something } from \\"./lib/something.js\\";
 export { something as another } from \\"./lib/something.js\\";
@@ -51,7 +57,9 @@ export * as replacer_something2 from './lib/something.ts';"
 
 exports[`Replace should add the default extension to import statements 1`] = `
 "import { oneBackLevel } from \\"../index.js\\";
+import { oneBackLevelIndex } from \\"../index.js\\";
 import { twoBackLevel } from \\"../../index.js\\";
+import { twoBackLevelIndex } from \\"../../index.js\\";
 import { somethingBack } from \\"../lib/something.js\\";
 import { export1, export2 as alias2 } from \\"./lib/something.js\\";
 import { something } from \\"./lib/something.js\\";
@@ -70,7 +78,9 @@ import * as replacer_Something from './lib/something.ts';"
 
 exports[`Replace should add the replace custom extension to export statements 1`] = `
 "export { oneBackLevel } from \\"../index.jsx\\";
+export { oneBackLevelIndex } from \\"../index.jsx\\";
 export { twoBackLevel } from \\"../../index.jsx\\";
+export { twoBackLevelIndex } from \\"../../index.jsx\\";
 export { somethingBack } from \\"../lib/something.jsx\\";
 export { something } from \\"./lib/something.jsx\\";
 export { something as another } from \\"./lib/something.jsx\\";
@@ -85,7 +95,9 @@ export * as replacer_something2 from \\"./lib/something.jsx\\";"
 
 exports[`Replace should add the replace custom extension to import statements 1`] = `
 "import { oneBackLevel } from \\"../index.jsx\\";
+import { oneBackLevelIndex } from \\"../index.jsx\\";
 import { twoBackLevel } from \\"../../index.jsx\\";
+import { twoBackLevelIndex } from \\"../../index.jsx\\";
 import { somethingBack } from \\"../lib/something.jsx\\";
 import { export1, export2 as alias2 } from \\"./lib/something.jsx\\";
 import { something } from \\"./lib/something.jsx\\";
@@ -104,7 +116,9 @@ import * as replacer_Something from \\"./lib/something.jsx\\";"
 
 exports[`Replace should add the replace default extension to export statements 1`] = `
 "export { oneBackLevel } from \\"../index.js\\";
+export { oneBackLevelIndex } from \\"../index.js\\";
 export { twoBackLevel } from \\"../../index.js\\";
+export { twoBackLevelIndex } from \\"../../index.js\\";
 export { somethingBack } from \\"../lib/something.js\\";
 export { something } from \\"./lib/something.js\\";
 export { something as another } from \\"./lib/something.js\\";
@@ -119,7 +133,9 @@ export * as replacer_something2 from \\"./lib/something.js\\";"
 
 exports[`Replace should add the replace default extension to import statements 1`] = `
 "import { oneBackLevel } from \\"../index.js\\";
+import { oneBackLevelIndex } from \\"../index.js\\";
 import { twoBackLevel } from \\"../../index.js\\";
+import { twoBackLevelIndex } from \\"../../index.js\\";
 import { somethingBack } from \\"../lib/something.js\\";
 import { export1, export2 as alias2 } from \\"./lib/something.js\\";
 import { something } from \\"./lib/something.js\\";
