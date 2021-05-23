@@ -3,6 +3,9 @@ const { types: { importDeclaration, exportNamedDeclaration, exportAllDeclaration
 const { existsSync, lstatSync } = require('fs')
 const { resolve, extname, dirname } = require('path')
 
+const isActiveExtension = (module, observedScriptExtensions) =>
+  observedScriptExtensions.indexOf(extname(module).replace(/[^a-z]/,'')) > -1
+
 const isNodeModule = module => {
   if (module.startsWith('.') || module.startsWith('/')) {
     return false
@@ -19,29 +22,36 @@ const isNodeModule = module => {
   }
 }
 
-const skipModule = (module, { replace, extension }) =>
+const skipModule = (module, { replace, extension, observedScriptExtensions }) =>
   !module.startsWith('.') ||
   isNodeModule(module) ||
   (
-    replace
+    replace && (isActiveExtension(module, observedScriptExtensions) || extname(module) === `.${extension}`)
       ? extname(module) === `.${extension}`
-      : extname(module).length
+      : extname(module).length 
+        && (isActiveExtension(module, observedScriptExtensions) || extname(module) === `.${extension}`)
+        && extname(module) === `.${extension}`
   )
 
 const makeDeclaration =
-  ({ declaration, args, replace = false, extension = 'js' }) =>
+  ({ declaration, args, replace = false, extension = 'js', observedScriptExtensions = ['js','ts','jsx','tsx'] }) =>
     (path, { file: { opts: { filename } } }) => {
       const { node } = path
       const { source, exportKind, importKind } = node
 
       const isTypeOnly = exportKind === 'type' || importKind === 'type'
 
-      if (!source || isTypeOnly || skipModule(source && source.value, { replace, extension })) return
-      const { value: module } = source
+      if (!source || isTypeOnly)
+        return;
 
+      const module = source && source.value;
+
+      if (skipModule(module, { replace, extension, observedScriptExtensions }))
+        return
+      
       const dirPath = resolve(dirname(filename), module)
 
-      const hasModuleExt = extname(module).length
+      const hasModuleExt = extname(module).length && isActiveExtension(module, observedScriptExtensions)
       const newModuleName = hasModuleExt ? module.slice(0, -extname(module).length) : module
 
       const pathLiteral = () => {
