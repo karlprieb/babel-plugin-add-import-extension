@@ -4,7 +4,7 @@ const { existsSync, lstatSync } = require('fs')
 const { resolve, extname, dirname } = require('path')
 
 const isActiveExtension = (module, observedScriptExtensions) =>
-  observedScriptExtensions.indexOf(extname(module).replace(/[^a-z]/,'')) > -1
+  observedScriptExtensions.indexOf(extname(module).replace(/[^a-z]/, '')) > -1
 
 const isNodeModule = module => {
   if (module.startsWith('.') || module.startsWith('/')) {
@@ -28,27 +28,25 @@ const skipModule = (module, { replace, extension, observedScriptExtensions }) =>
   (
     replace && (isActiveExtension(module, observedScriptExtensions) || extname(module) === `.${extension}`)
       ? extname(module) === `.${extension}`
-      : extname(module).length 
-        && (isActiveExtension(module, observedScriptExtensions) || extname(module) === `.${extension}`)
-        && extname(module) === `.${extension}`
+      : extname(module).length &&
+        (isActiveExtension(module, observedScriptExtensions) || extname(module) === `.${extension}`) &&
+        extname(module) === `.${extension}`
   )
 
 const makeDeclaration =
-  ({ declaration, args, replace = false, extension = 'js', observedScriptExtensions = ['js','ts','jsx','tsx'] }) =>
+  ({ declaration, args, replace = false, extension = 'js', observedScriptExtensions = ['js', 'ts', 'jsx', 'tsx', 'mjs', 'cjs'] }) =>
     (path, { file: { opts: { filename } } }) => {
       const { node } = path
       const { source, exportKind, importKind } = node
 
       const isTypeOnly = exportKind === 'type' || importKind === 'type'
 
-      if (!source || isTypeOnly)
-        return;
+      if (!source || isTypeOnly) { return }
 
-      const module = source && source.value;
+      const module = source && source.value
 
-      if (skipModule(module, { replace, extension, observedScriptExtensions }))
-        return
-      
+      if (skipModule(module, { replace, extension, observedScriptExtensions })) { return }
+
       const dirPath = resolve(dirname(filename), module)
 
       const hasModuleExt = extname(module).length && isActiveExtension(module, observedScriptExtensions)

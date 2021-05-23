@@ -42,7 +42,7 @@ by changing the `observedScriptExtensions` option
 
 ```js
 plugins: [
-  ["babel-plugin-add-import-extension", { extension: "jsx", replace: true, observedScriptExtensions: ['js','ts','jsx','tsx'] }], // will add jsx extension
+  ["babel-plugin-add-import-extension", { extension: "jsx", replace: true, observedScriptExtensions: ['js','ts','jsx','tsx', 'mjs', 'cjs'] }], // will add jsx extension
 ];
 ```
 
