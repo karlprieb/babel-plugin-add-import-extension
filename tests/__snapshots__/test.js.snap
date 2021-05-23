@@ -1,20 +1,89 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Replace should add the custom extension to export not observed statements 1`] = `
+"export { oneBackLevel } from \\"../index.jsx\\";
+export { oneBackLevelIndex } from \\"../index.jsx\\";
+export { twoBackLevel } from \\"../../index.jsx\\";
+export { twoBackLevelIndex } from \\"../../index.jsx\\";
+export { somethingBack } from \\"../lib/something.jsx\\";
+export { somethingBackTest } from \\"../lib/something.test.jsx\\";
+export { something } from \\"./lib/something.jsx\\";
+export { somethingTest } from \\"./lib/something.test.jsx\\";
+export { something as another } from \\"./lib/something.jsx\\";
+export { somethingTest as anotherTest } from \\"./lib/something.test.jsx\\";
+export * as anotherModule from \\"./lib/something.jsx\\";
+export * as anotherModuleTest from \\"./lib/something.test.jsx\\";
+export * from \\"./lib/something.jsx\\";
+export * from \\"./lib/something.test.jsx\\";
+export { transform } from '@babel/core';
+export { replacer_something } from \\"./lib/something.jsx\\";
+export { replacer_somethingTest } from \\"./lib/something.test.jsx\\";
+export { replacer_something as replacer_another } from \\"./lib/something.jsx\\";
+export { replacer_something as replacer_anotherTest } from \\"./lib/something.test.jsx\\";
+export * as replacer_anotherModule from \\"./lib/something.jsx\\";
+export * as replacer_anotherModuleTest from \\"./lib/something.test.jsx\\";
+export * as replacer_something2 from \\"./lib/something.jsx\\";
+export * as replacer_something2Test from \\"./lib/something.test.jsx\\";"
+`;
+
 exports[`Replace should add the custom extension to export statements 1`] = `
 "export { oneBackLevel } from \\"../index.jsx\\";
 export { oneBackLevelIndex } from \\"../index.jsx\\";
 export { twoBackLevel } from \\"../../index.jsx\\";
 export { twoBackLevelIndex } from \\"../../index.jsx\\";
 export { somethingBack } from \\"../lib/something.jsx\\";
+export { somethingBackTest } from \\"../lib/something.test.jsx\\";
 export { something } from \\"./lib/something.jsx\\";
+export { somethingTest } from \\"./lib/something.test.jsx\\";
 export { something as another } from \\"./lib/something.jsx\\";
+export { somethingTest as anotherTest } from \\"./lib/something.test.jsx\\";
 export * as anotherModule from \\"./lib/something.jsx\\";
+export * as anotherModuleTest from \\"./lib/something.test.jsx\\";
 export * from \\"./lib/something.jsx\\";
+export * from \\"./lib/something.test.jsx\\";
 export { transform } from '@babel/core';
-export { replacer_something } from './lib/something.ts';
-export { replacer_something as replacer_another } from './lib/something.ts';
-export * as replacer_anotherModule from './lib/something.ts';
-export * as replacer_something2 from './lib/something.ts';"
+export { replacer_something } from \\"./lib/something.jsx\\";
+export { replacer_somethingTest } from \\"./lib/something.test.jsx\\";
+export { replacer_something as replacer_another } from \\"./lib/something.jsx\\";
+export { replacer_something as replacer_anotherTest } from \\"./lib/something.test.jsx\\";
+export * as replacer_anotherModule from \\"./lib/something.jsx\\";
+export * as replacer_anotherModuleTest from \\"./lib/something.test.jsx\\";
+export * as replacer_something2 from \\"./lib/something.jsx\\";
+export * as replacer_something2Test from \\"./lib/something.test.jsx\\";"
+`;
+
+exports[`Replace should add the custom extension to import not observed statements 1`] = `
+"import { oneBackLevel } from \\"../index.jsx\\";
+import { oneBackLevelIndex } from \\"../index.jsx\\";
+import { twoBackLevel } from \\"../../index.jsx\\";
+import { twoBackLevelIndex } from \\"../../index.jsx\\";
+import { somethingBack } from \\"../lib/something.jsx\\";
+import { somethingBackTest } from \\"../lib/something.test.jsx\\";
+import { export1, export2 as alias2 } from \\"./lib/something.jsx\\";
+import { export1Test, export2 as alias2Test } from \\"./lib/something.test.jsx\\";
+import { something } from \\"./lib/something.jsx\\";
+import { somethingTest } from \\"./lib/something.test.jsx\\";
+import { something as other } from \\"./lib/something.jsx\\";
+import { something as otherTest } from \\"./lib/something.test.jsx\\";
+import anotherImport from \\"./lib/something.jsx\\";
+import anotherImportTest from \\"./lib/something.test.jsx\\";
+import another, { otherImport } from \\"./lib/something.jsx\\";
+import anotherTest, { otherImportTest } from \\"./lib/something.test.jsx\\";
+import * as Something from \\"./lib/something.jsx\\";
+import * as SomethingTest from \\"./lib/something.test.jsx\\";
+import { transform } from '@babel/core';
+import { replacer_export1, replacer_export2 as replacer_alias2 } from \\"./lib/something.jsx\\";
+import { replacer_export1Test, replacer_export2 as replacer_alias2Test } from \\"./lib/something.test.jsx\\";
+import { replacer_something } from \\"./lib/something.jsx\\";
+import { replacer_somethingTest } from \\"./lib/something.test.jsx\\";
+import { replacer_something as replacer_other } from \\"./lib/something.jsx\\";
+import { replacer_something as replacer_otherTest } from \\"./lib/something.test.jsx\\";
+import replacer_anotherImport from \\"./lib/something.jsx\\";
+import replacer_anotherImportTest from \\"./lib/something.test.jsx\\";
+import replacer_another, { replacer_otherImport } from \\"./lib/something.jsx\\";
+import replacer_anotherTest, { replacer_otherImportTest } from \\"./lib/something.test.jsx\\";
+import * as replacer_Something from \\"./lib/something.jsx\\";
+import * as replacer_SomethingTest from \\"./lib/something.test.jsx\\";"
 `;
 
 exports[`Replace should add the custom extension to import statements 1`] = `
@@ -23,36 +92,32 @@ import { oneBackLevelIndex } from \\"../index.jsx\\";
 import { twoBackLevel } from \\"../../index.jsx\\";
 import { twoBackLevelIndex } from \\"../../index.jsx\\";
 import { somethingBack } from \\"../lib/something.jsx\\";
+import { somethingBackTest } from \\"../lib/something.test.jsx\\";
 import { export1, export2 as alias2 } from \\"./lib/something.jsx\\";
+import { export1Test, export2 as alias2Test } from \\"./lib/something.test.jsx\\";
 import { something } from \\"./lib/something.jsx\\";
+import { somethingTest } from \\"./lib/something.test.jsx\\";
 import { something as other } from \\"./lib/something.jsx\\";
+import { something as otherTest } from \\"./lib/something.test.jsx\\";
 import anotherImport from \\"./lib/something.jsx\\";
+import anotherImportTest from \\"./lib/something.test.jsx\\";
 import another, { otherImport } from \\"./lib/something.jsx\\";
+import anotherTest, { otherImportTest } from \\"./lib/something.test.jsx\\";
 import * as Something from \\"./lib/something.jsx\\";
+import * as SomethingTest from \\"./lib/something.test.jsx\\";
 import { transform } from '@babel/core';
-import { replacer_export1, replacer_export2 as replacer_alias2 } from './lib/something.ts';
-import { replacer_something } from './lib/something.ts';
-import { replacer_something as replacer_other } from './lib/something.ts';
-import replacer_anotherImport from './lib/something.ts';
-import replacer_another, { replacer_otherImport } from './lib/something.ts';
-import * as replacer_Something from './lib/something.ts';"
-`;
-
-exports[`Replace should add the default extension to export statements 1`] = `
-"export { oneBackLevel } from \\"../index.js\\";
-export { oneBackLevelIndex } from \\"../index.js\\";
-export { twoBackLevel } from \\"../../index.js\\";
-export { twoBackLevelIndex } from \\"../../index.js\\";
-export { somethingBack } from \\"../lib/something.js\\";
-export { something } from \\"./lib/something.js\\";
-export { something as another } from \\"./lib/something.js\\";
-export * as anotherModule from \\"./lib/something.js\\";
-export * from \\"./lib/something.js\\";
-export { transform } from '@babel/core';
-export { replacer_something } from './lib/something.ts';
-export { replacer_something as replacer_another } from './lib/something.ts';
-export * as replacer_anotherModule from './lib/something.ts';
-export * as replacer_something2 from './lib/something.ts';"
+import { replacer_export1, replacer_export2 as replacer_alias2 } from \\"./lib/something.jsx\\";
+import { replacer_export1Test, replacer_export2 as replacer_alias2Test } from \\"./lib/something.test.jsx\\";
+import { replacer_something } from \\"./lib/something.jsx\\";
+import { replacer_somethingTest } from \\"./lib/something.test.jsx\\";
+import { replacer_something as replacer_other } from \\"./lib/something.jsx\\";
+import { replacer_something as replacer_otherTest } from \\"./lib/something.test.jsx\\";
+import replacer_anotherImport from \\"./lib/something.jsx\\";
+import replacer_anotherImportTest from \\"./lib/something.test.jsx\\";
+import replacer_another, { replacer_otherImport } from \\"./lib/something.jsx\\";
+import replacer_anotherTest, { replacer_otherImportTest } from \\"./lib/something.test.jsx\\";
+import * as replacer_Something from \\"./lib/something.jsx\\";
+import * as replacer_SomethingTest from \\"./lib/something.test.jsx\\";"
 `;
 
 exports[`Replace should add the default extension to import statements 1`] = `
@@ -61,19 +126,58 @@ import { oneBackLevelIndex } from \\"../index.js\\";
 import { twoBackLevel } from \\"../../index.js\\";
 import { twoBackLevelIndex } from \\"../../index.js\\";
 import { somethingBack } from \\"../lib/something.js\\";
+import { somethingBackTest } from \\"../lib/something.test.js\\";
 import { export1, export2 as alias2 } from \\"./lib/something.js\\";
+import { export1Test, export2 as alias2Test } from \\"./lib/something.test.js\\";
 import { something } from \\"./lib/something.js\\";
+import { somethingTest } from \\"./lib/something.test.js\\";
 import { something as other } from \\"./lib/something.js\\";
+import { something as otherTest } from \\"./lib/something.test.js\\";
 import anotherImport from \\"./lib/something.js\\";
+import anotherImportTest from \\"./lib/something.test.js\\";
 import another, { otherImport } from \\"./lib/something.js\\";
+import anotherTest, { otherImportTest } from \\"./lib/something.test.js\\";
 import * as Something from \\"./lib/something.js\\";
+import * as SomethingTest from \\"./lib/something.test.js\\";
 import { transform } from '@babel/core';
-import { replacer_export1, replacer_export2 as replacer_alias2 } from './lib/something.ts';
-import { replacer_something } from './lib/something.ts';
-import { replacer_something as replacer_other } from './lib/something.ts';
-import replacer_anotherImport from './lib/something.ts';
-import replacer_another, { replacer_otherImport } from './lib/something.ts';
-import * as replacer_Something from './lib/something.ts';"
+import { replacer_export1, replacer_export2 as replacer_alias2 } from \\"./lib/something.js\\";
+import { replacer_export1Test, replacer_export2 as replacer_alias2Test } from \\"./lib/something.test.js\\";
+import { replacer_something } from \\"./lib/something.js\\";
+import { replacer_somethingTest } from \\"./lib/something.test.js\\";
+import { replacer_something as replacer_other } from \\"./lib/something.js\\";
+import { replacer_something as replacer_otherTest } from \\"./lib/something.test.js\\";
+import replacer_anotherImport from \\"./lib/something.js\\";
+import replacer_anotherImportTest from \\"./lib/something.test.js\\";
+import replacer_another, { replacer_otherImport } from \\"./lib/something.js\\";
+import replacer_anotherTest, { replacer_otherImportTest } from \\"./lib/something.test.js\\";
+import * as replacer_Something from \\"./lib/something.js\\";
+import * as replacer_SomethingTest from \\"./lib/something.test.js\\";"
+`;
+
+exports[`Replace should add the replace custom extension to export not observed statements 1`] = `
+"export { oneBackLevel } from \\"../index.jsx\\";
+export { oneBackLevelIndex } from \\"../index.jsx\\";
+export { twoBackLevel } from \\"../../index.jsx\\";
+export { twoBackLevelIndex } from \\"../../index.jsx\\";
+export { somethingBack } from \\"../lib/something.jsx\\";
+export { somethingBackTest } from \\"../lib/something.test.jsx\\";
+export { something } from \\"./lib/something.jsx\\";
+export { somethingTest } from \\"./lib/something.test.jsx\\";
+export { something as another } from \\"./lib/something.jsx\\";
+export { somethingTest as anotherTest } from \\"./lib/something.test.jsx\\";
+export * as anotherModule from \\"./lib/something.jsx\\";
+export * as anotherModuleTest from \\"./lib/something.test.jsx\\";
+export * from \\"./lib/something.jsx\\";
+export * from \\"./lib/something.test.jsx\\";
+export { transform } from '@babel/core';
+export { replacer_something } from \\"./lib/something.jsx\\";
+export { replacer_somethingTest } from \\"./lib/something.test.jsx\\";
+export { replacer_something as replacer_another } from \\"./lib/something.jsx\\";
+export { replacer_something as replacer_anotherTest } from \\"./lib/something.test.jsx\\";
+export * as replacer_anotherModule from \\"./lib/something.jsx\\";
+export * as replacer_anotherModuleTest from \\"./lib/something.test.jsx\\";
+export * as replacer_something2 from \\"./lib/something.jsx\\";
+export * as replacer_something2Test from \\"./lib/something.test.jsx\\";"
 `;
 
 exports[`Replace should add the replace custom extension to export statements 1`] = `
@@ -82,15 +186,58 @@ export { oneBackLevelIndex } from \\"../index.jsx\\";
 export { twoBackLevel } from \\"../../index.jsx\\";
 export { twoBackLevelIndex } from \\"../../index.jsx\\";
 export { somethingBack } from \\"../lib/something.jsx\\";
+export { somethingBackTest } from \\"../lib/something.test.jsx\\";
 export { something } from \\"./lib/something.jsx\\";
+export { somethingTest } from \\"./lib/something.test.jsx\\";
 export { something as another } from \\"./lib/something.jsx\\";
+export { somethingTest as anotherTest } from \\"./lib/something.test.jsx\\";
 export * as anotherModule from \\"./lib/something.jsx\\";
+export * as anotherModuleTest from \\"./lib/something.test.jsx\\";
 export * from \\"./lib/something.jsx\\";
+export * from \\"./lib/something.test.jsx\\";
 export { transform } from '@babel/core';
 export { replacer_something } from \\"./lib/something.jsx\\";
+export { replacer_somethingTest } from \\"./lib/something.test.jsx\\";
 export { replacer_something as replacer_another } from \\"./lib/something.jsx\\";
+export { replacer_something as replacer_anotherTest } from \\"./lib/something.test.jsx\\";
 export * as replacer_anotherModule from \\"./lib/something.jsx\\";
-export * as replacer_something2 from \\"./lib/something.jsx\\";"
+export * as replacer_anotherModuleTest from \\"./lib/something.test.jsx\\";
+export * as replacer_something2 from \\"./lib/something.jsx\\";
+export * as replacer_something2Test from \\"./lib/something.test.jsx\\";"
+`;
+
+exports[`Replace should add the replace custom extension to import not observed statements 1`] = `
+"import { oneBackLevel } from \\"../index.jsx\\";
+import { oneBackLevelIndex } from \\"../index.jsx\\";
+import { twoBackLevel } from \\"../../index.jsx\\";
+import { twoBackLevelIndex } from \\"../../index.jsx\\";
+import { somethingBack } from \\"../lib/something.jsx\\";
+import { somethingBackTest } from \\"../lib/something.test.jsx\\";
+import { export1, export2 as alias2 } from \\"./lib/something.jsx\\";
+import { export1Test, export2 as alias2Test } from \\"./lib/something.test.jsx\\";
+import { something } from \\"./lib/something.jsx\\";
+import { somethingTest } from \\"./lib/something.test.jsx\\";
+import { something as other } from \\"./lib/something.jsx\\";
+import { something as otherTest } from \\"./lib/something.test.jsx\\";
+import anotherImport from \\"./lib/something.jsx\\";
+import anotherImportTest from \\"./lib/something.test.jsx\\";
+import another, { otherImport } from \\"./lib/something.jsx\\";
+import anotherTest, { otherImportTest } from \\"./lib/something.test.jsx\\";
+import * as Something from \\"./lib/something.jsx\\";
+import * as SomethingTest from \\"./lib/something.test.jsx\\";
+import { transform } from '@babel/core';
+import { replacer_export1, replacer_export2 as replacer_alias2 } from \\"./lib/something.jsx\\";
+import { replacer_export1Test, replacer_export2 as replacer_alias2Test } from \\"./lib/something.test.jsx\\";
+import { replacer_something } from \\"./lib/something.jsx\\";
+import { replacer_somethingTest } from \\"./lib/something.test.jsx\\";
+import { replacer_something as replacer_other } from \\"./lib/something.jsx\\";
+import { replacer_something as replacer_otherTest } from \\"./lib/something.test.jsx\\";
+import replacer_anotherImport from \\"./lib/something.jsx\\";
+import replacer_anotherImportTest from \\"./lib/something.test.jsx\\";
+import replacer_another, { replacer_otherImport } from \\"./lib/something.jsx\\";
+import replacer_anotherTest, { replacer_otherImportTest } from \\"./lib/something.test.jsx\\";
+import * as replacer_Something from \\"./lib/something.jsx\\";
+import * as replacer_SomethingTest from \\"./lib/something.test.jsx\\";"
 `;
 
 exports[`Replace should add the replace custom extension to import statements 1`] = `
@@ -99,36 +246,32 @@ import { oneBackLevelIndex } from \\"../index.jsx\\";
 import { twoBackLevel } from \\"../../index.jsx\\";
 import { twoBackLevelIndex } from \\"../../index.jsx\\";
 import { somethingBack } from \\"../lib/something.jsx\\";
+import { somethingBackTest } from \\"../lib/something.test.jsx\\";
 import { export1, export2 as alias2 } from \\"./lib/something.jsx\\";
+import { export1Test, export2 as alias2Test } from \\"./lib/something.test.jsx\\";
 import { something } from \\"./lib/something.jsx\\";
+import { somethingTest } from \\"./lib/something.test.jsx\\";
 import { something as other } from \\"./lib/something.jsx\\";
+import { something as otherTest } from \\"./lib/something.test.jsx\\";
 import anotherImport from \\"./lib/something.jsx\\";
+import anotherImportTest from \\"./lib/something.test.jsx\\";
 import another, { otherImport } from \\"./lib/something.jsx\\";
+import anotherTest, { otherImportTest } from \\"./lib/something.test.jsx\\";
 import * as Something from \\"./lib/something.jsx\\";
+import * as SomethingTest from \\"./lib/something.test.jsx\\";
 import { transform } from '@babel/core';
 import { replacer_export1, replacer_export2 as replacer_alias2 } from \\"./lib/something.jsx\\";
+import { replacer_export1Test, replacer_export2 as replacer_alias2Test } from \\"./lib/something.test.jsx\\";
 import { replacer_something } from \\"./lib/something.jsx\\";
+import { replacer_somethingTest } from \\"./lib/something.test.jsx\\";
 import { replacer_something as replacer_other } from \\"./lib/something.jsx\\";
+import { replacer_something as replacer_otherTest } from \\"./lib/something.test.jsx\\";
 import replacer_anotherImport from \\"./lib/something.jsx\\";
+import replacer_anotherImportTest from \\"./lib/something.test.jsx\\";
 import replacer_another, { replacer_otherImport } from \\"./lib/something.jsx\\";
-import * as replacer_Something from \\"./lib/something.jsx\\";"
-`;
-
-exports[`Replace should add the replace default extension to export statements 1`] = `
-"export { oneBackLevel } from \\"../index.js\\";
-export { oneBackLevelIndex } from \\"../index.js\\";
-export { twoBackLevel } from \\"../../index.js\\";
-export { twoBackLevelIndex } from \\"../../index.js\\";
-export { somethingBack } from \\"../lib/something.js\\";
-export { something } from \\"./lib/something.js\\";
-export { something as another } from \\"./lib/something.js\\";
-export * as anotherModule from \\"./lib/something.js\\";
-export * from \\"./lib/something.js\\";
-export { transform } from '@babel/core';
-export { replacer_something } from \\"./lib/something.js\\";
-export { replacer_something as replacer_another } from \\"./lib/something.js\\";
-export * as replacer_anotherModule from \\"./lib/something.js\\";
-export * as replacer_something2 from \\"./lib/something.js\\";"
+import replacer_anotherTest, { replacer_otherImportTest } from \\"./lib/something.test.jsx\\";
+import * as replacer_Something from \\"./lib/something.jsx\\";
+import * as replacer_SomethingTest from \\"./lib/something.test.jsx\\";"
 `;
 
 exports[`Replace should add the replace default extension to import statements 1`] = `
@@ -137,33 +280,72 @@ import { oneBackLevelIndex } from \\"../index.js\\";
 import { twoBackLevel } from \\"../../index.js\\";
 import { twoBackLevelIndex } from \\"../../index.js\\";
 import { somethingBack } from \\"../lib/something.js\\";
+import { somethingBackTest } from \\"../lib/something.test.js\\";
 import { export1, export2 as alias2 } from \\"./lib/something.js\\";
+import { export1Test, export2 as alias2Test } from \\"./lib/something.test.js\\";
 import { something } from \\"./lib/something.js\\";
+import { somethingTest } from \\"./lib/something.test.js\\";
 import { something as other } from \\"./lib/something.js\\";
+import { something as otherTest } from \\"./lib/something.test.js\\";
 import anotherImport from \\"./lib/something.js\\";
+import anotherImportTest from \\"./lib/something.test.js\\";
 import another, { otherImport } from \\"./lib/something.js\\";
+import anotherTest, { otherImportTest } from \\"./lib/something.test.js\\";
 import * as Something from \\"./lib/something.js\\";
+import * as SomethingTest from \\"./lib/something.test.js\\";
 import { transform } from '@babel/core';
 import { replacer_export1, replacer_export2 as replacer_alias2 } from \\"./lib/something.js\\";
+import { replacer_export1Test, replacer_export2 as replacer_alias2Test } from \\"./lib/something.test.js\\";
 import { replacer_something } from \\"./lib/something.js\\";
+import { replacer_somethingTest } from \\"./lib/something.test.js\\";
 import { replacer_something as replacer_other } from \\"./lib/something.js\\";
+import { replacer_something as replacer_otherTest } from \\"./lib/something.test.js\\";
 import replacer_anotherImport from \\"./lib/something.js\\";
+import replacer_anotherImportTest from \\"./lib/something.test.js\\";
 import replacer_another, { replacer_otherImport } from \\"./lib/something.js\\";
-import * as replacer_Something from \\"./lib/something.js\\";"
+import replacer_anotherTest, { replacer_otherImportTest } from \\"./lib/something.test.js\\";
+import * as replacer_Something from \\"./lib/something.js\\";
+import * as replacer_SomethingTest from \\"./lib/something.test.js\\";"
 `;
 
-exports[`Replace should skip type-only exports 1`] = `"export type { NamedType } from './lib/something';"`;
+exports[`Replace should skip type-only exports 1`] = `
+"export type { NamedType } from './lib/something';
+export type { NamedTypeTest } from './lib/something.test';"
+`;
 
-exports[`Replace should skip type-only exports 2`] = `"export type { NamedType } from './lib/something';"`;
+exports[`Replace should skip type-only exports 2`] = `
+"export type { NamedType } from './lib/something';
+export type { NamedTypeTest } from './lib/something.test';"
+`;
+
+exports[`Replace should skip type-only exports not observed 1`] = `
+"export type { NamedType } from './lib/something';
+export type { NamedTypeTest } from './lib/something.test';"
+`;
 
 exports[`Replace should skip type-only imports 1`] = `
 "import type DefaultType from './lib/something';
+import type DefaultTypeTest from './lib/something.test';
 import type { NamedType } from './lib/something';
-import type * as AllTypes from './lib/something';"
+import type { NamedTypeTest } from './lib/something.test';
+import type * as AllTypes from './lib/something';
+import type * as AllTypesTest from './lib/something.test';"
 `;
 
 exports[`Replace should skip type-only imports 2`] = `
 "import type DefaultType from './lib/something';
+import type DefaultTypeTest from './lib/something.test';
 import type { NamedType } from './lib/something';
-import type * as AllTypes from './lib/something';"
+import type { NamedTypeTest } from './lib/something.test';
+import type * as AllTypes from './lib/something';
+import type * as AllTypesTest from './lib/something.test';"
+`;
+
+exports[`Replace should skip type-only imports not observed 1`] = `
+"import type DefaultType from './lib/something';
+import type DefaultTypeTest from './lib/something.test';
+import type { NamedType } from './lib/something';
+import type { NamedTypeTest } from './lib/something.test';
+import type * as AllTypes from './lib/something';
+import type * as AllTypesTest from './lib/something.test';"
 `;

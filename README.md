@@ -32,7 +32,17 @@ You can also replace existing extensions with the one you want
 
 ```js
 plugins: [
-  ["babel-plugin-add-import-extension", { extension: "jsx", replace: true }], // will add jsx extension
+  ["babel-plugin-add-import-extension", { extension: "jsx", replace: true }], // will replace the "observedScriptExtensions" [see below] to jsx
+];
+```
+
+To be able to handle file with a *.* in the filename (e.g *component.style.ts*) the plugin is configured
+to only handle a certain set of file extensions. If needed you can adjust the default of `['js','ts','jsx','tsx']` 
+by changing the `observedScriptExtensions` option
+
+```js
+plugins: [
+  ["babel-plugin-add-import-extension", { extension: "jsx", replace: true, observedScriptExtensions: ['js','ts','jsx','tsx'] }], // will add jsx extension
 ];
 ```
 
